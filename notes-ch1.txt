@@ -1,0 +1,16 @@
+Follows the code in chapter 1 of Modern Full-Stack React Projects by Daniel Bugl
+
+Packages:
+- prettier: Formats code automatically due to a defined code style
+- eslint: Analyzes code automatically and enforces best practices
+- eslint-config-react: Enables rules in ESLint relevant to React projects
+- eslint-config-prettier: Disables rules relating to code style in ESLint (handled by Prettier)
+- eslint-plugin-jsx-a11y: Allows ESling to check for accessibility (a11y) issues in our jsx code
+
+Note: --save-dev flag in npm install
+- saves dependencies as dev dependencies, which will not be installed in a deployed app to minimize the size of containers
+
+Prettier
+- Formats code (replacing the default code formatter provided by VS Code)
+- Configuration is found in .prettierrc.json
+- Create an ignore file to list files that should not be automatically formatted (/node_modules is automatically excluded)
