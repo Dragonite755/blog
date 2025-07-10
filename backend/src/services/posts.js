@@ -1,3 +1,5 @@
+import mongoose from 'mongoose'
+
 import { Post } from '../db/models/post.js'
 
 export async function createPost({ title, author, contents, tags }) {
@@ -17,6 +19,10 @@ export async function listAllPosts(options) {
 }
 
 export async function listPostsByAuthor(author, options) {
+  if (!mongoose.Types.ObjectId.isValid(author)) {
+    throw new Error('Invalid author ID')
+  }
+
   return await listPosts({ author }, options)
 }
 
@@ -29,6 +35,10 @@ export async function getPostById(postId) {
 }
 
 export async function updatePost(postId, { title, author, contents, tags }) {
+  if (!mongoose.Types.ObjectId.isValid(author)) {
+    throw new Error('Invalid author ID')
+  }
+
   return await Post.findOneAndUpdate(
     { _id: postId },
     { $set: { title, author, contents, tags } },
