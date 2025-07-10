@@ -1,0 +1,25 @@
+import PropTypes from 'prop-types'
+
+export function Post({ title, contents, author }) {
+  return (
+    <article>
+      <h3>{title}</h3>
+      <div>{contents}</div>
+      {author && (
+        <em>
+          <br />
+          Written by <strong>{author}</strong>
+        </em>
+      )}
+    </article>
+  )
+}
+
+export const postPropType = {
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  contents: PropTypes.string,
+  author: PropTypes.string,
+}
+
+Post.propTypes = postPropType
