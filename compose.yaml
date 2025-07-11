@@ -9,6 +9,7 @@ services:
     environment:
       - PORT=3001
       - DATABASE_URL=mongodb://host.docker.internal:27017/blog
+      - JWT_SECRET=not-so-secret
     ports:
       - '3001:3001'
     depends_on:
