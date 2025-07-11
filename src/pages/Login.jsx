@@ -54,7 +54,7 @@ export function Login() {
       <br />
       <input
         type='submit'
-        value={loginMutation.isPending ? 'Loggin in...' : 'Sign Up'}
+        value={loginMutation.isPending ? 'Loggin in...' : 'Log In'}
         disabled={!username || !password || loginMutation.isPending}
       />
     </form>
