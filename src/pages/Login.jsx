@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate, Link } from 'react-router-dom'
 
@@ -19,6 +19,14 @@ export function Login() {
     },
     onError: () => alert('failed to log in!'),
   })
+
+  if (typeof window === 'undefined') {
+    console.log('SSR log - username:', username)
+  } else {
+    useEffect(() => {
+      console.log('Client log - username:', username)
+    }, [username])
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -54,7 +62,7 @@ export function Login() {
       <br />
       <input
         type='submit'
-        value={loginMutation.isPending ? 'Loggin in...' : 'Log In'}
+        value={loginMutation.isPending ? 'Logging in...' : 'Log In'}
         disabled={!username || !password || loginMutation.isPending}
       />
     </form>

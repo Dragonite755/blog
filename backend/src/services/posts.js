@@ -21,9 +21,9 @@ export async function listPostsByAuthor(authorUsername, options) {
   // if (!mongoose.Types.ObjectId.isValid(author)) {
   //   throw new Error('Invalid author ID')
   // }
-  const user = await User.findOne({ username: authorUsername })
-  if (!user) return []
-  return await listPosts({ author: user._id }, options)
+  const author = await User.findOne({ username: authorUsername })
+  if (!author) return []
+  return await listPosts({ author: author._id }, options)
 }
 
 export async function listPostsByTag(tags, options) {

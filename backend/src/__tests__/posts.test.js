@@ -162,12 +162,12 @@ describe('listing posts', () => {
   })
 
   test('should be able to filter posts by author', async () => {
-    const authorId = userMap['DanielBugl']._id // ID of author with username 'DanielBugl'
-    const posts = await listPostsByAuthor(authorId)
+    const author = userMap['DanielBugl']
+    const posts = await listPostsByAuthor(author.username)
     expect(posts.length).toBe(3) // Test that 3 users have this author
     posts.forEach((post) => {
-      // Test that each post's author is this user
-      expect(post.author.toString()).toBe(authorId.toString())
+      // Test that each retrieved posts
+      expect(post.author._id.toString()).toBe(author._id.toString())
     })
   })
 

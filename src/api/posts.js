@@ -1,4 +1,8 @@
 export const getPosts = async (queryParams) => {
+  console.log(
+    `fetching from ${import.meta.env.VITE_BACKEND_URL}/posts?` +
+      new URLSearchParams(queryParams),
+  )
   const res = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/posts?` +
       new URLSearchParams(queryParams),
