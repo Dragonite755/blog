@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate, Link } from 'react-router-dom'
 
@@ -19,14 +19,6 @@ export function Login() {
     },
     onError: () => alert('failed to log in!'),
   })
-
-  if (typeof window === 'undefined') {
-    console.log('SSR log - username:', username)
-  } else {
-    useEffect(() => {
-      console.log('Client log - username:', username)
-    }, [username])
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
