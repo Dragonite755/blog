@@ -19,8 +19,8 @@ COPY --from=build /build/dist ./dist
 COPY --from=build /build/server.js ./server.js
 COPY --from=build /build/package*.json ./
 
-# Install only production deps
-RUN npm install --production
+# Install only production deps, skip postinstall scripts
+RUN npm install --production --ignore-scripts
 
 EXPOSE 8080
 CMD ["npm", "start"]
