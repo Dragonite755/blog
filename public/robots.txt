@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://blog-frontend-200185277851.us-west3.run.app/sitemap.xml
