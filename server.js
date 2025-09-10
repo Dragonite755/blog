@@ -7,6 +7,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 
+console.log('FRONTEND_URL', process.env.FRONTEND_URL)
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function createProdServer() {
