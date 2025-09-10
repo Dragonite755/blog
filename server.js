@@ -12,6 +12,8 @@ console.log('FRONTEND_URL', process.env.FRONTEND_URL)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function createProdServer() {
+  console.log('FRONTEND_URL', process.env.FRONTEND_URL)
+
   const app = express()
 
   app.use((await import('compression')).default())
@@ -26,6 +28,8 @@ async function createProdServer() {
 
   // Sitemap
   app.get('/sitemap.xml', async (req, res) => {
+    console.log('FRONTEND_URL', process.env.FRONTEND_URL)
+    console.log('Retrieving sitemap at', req.url)
     const sitemap = await generateSitemap()
     return res
       .status(200)
@@ -53,6 +57,8 @@ async function createProdServer() {
 }
 
 async function createDevServer() {
+  console.log('FRONTEND_URL', process.env.FRONTEND_URL)
+
   const app = express()
   const vite = await (
     await import('vite')
@@ -64,6 +70,8 @@ async function createDevServer() {
 
   // Sitemap
   app.get('/sitemap.xml', async (req, res) => {
+    console.log('FRONTEND_URL', process.env.FRONTEND_URL)
+    console.log('Retrieving sitemap at', req.url)
     const sitemap = await generateSitemap()
     return res
       .status(200)
