@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { generateSitemap } from './generateSiteMap.js'
+import { generateSitemap } from './generateSitemap.js'
 
 import express from 'express'
 import dotenv from 'dotenv'
