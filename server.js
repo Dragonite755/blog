@@ -23,7 +23,7 @@ async function createProdServer() {
   )
 
   // Sitemap
-  app.get(`${process.env.FRONTEND_URL}/sitemap.xml`, async (req, res) => {
+  app.get('/sitemap.xml', async (req, res) => {
     console.log('Retrieving sitemap')
     const sitemap = await generateSitemap()
     return res
@@ -62,7 +62,7 @@ async function createDevServer() {
   app.use(vite.middlewares)
 
   // Sitemap
-  app.get(`${process.env.FRONTEND_URL}/sitemap.xml`, async (req, res) => {
+  app.get('/sitemap.xml', async (req, res) => {
     console.log('Retrieving sitemap')
     const sitemap = await generateSitemap()
     return res
