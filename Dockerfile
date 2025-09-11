@@ -21,9 +21,11 @@ WORKDIR /app
 
 # Copy build output and package files
 COPY --from=build /build/dist ./dist
-COPY --from=build /build/server.js . 
-COPY --from=build /build/generateSitemap.js .
 COPY --from=build /build/package*.json ./
+
+# Copy server and sitemap generator
+COPY server.js .
+COPY generateSitemap.js .
 
 # Install only production dependencies, skip scripts like husky
 RUN npm install --omit=dev --ignore-scripts
