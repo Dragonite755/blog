@@ -4,8 +4,18 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const baseUrl = process.env.FRONTEND_URL
+console.log('Base URL for sitemap:', baseUrl)
 
 export async function generateSitemap() {
+  console.log('Generating sitemap...')
+  if (!baseUrl) {
+    throw new Error('FRONTEND_URL is not defined in environment variables')
+  }
+  console.log(
+    'Fetching posts from backend to generate sitemap:',
+    process.env.VITE_BACKEND_URL,
+  )
+
   const postsRequest = await fetch(`${process.env.VITE_BACKEND_URL}/posts`)
   const posts = await postsRequest.json()
 
