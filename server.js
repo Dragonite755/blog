@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-// import { generateSitemap } from './generateSitemap.js'
+import { generateSitemap } from './generateSitemap.js'
 
 import express from 'express'
 import dotenv from 'dotenv'
@@ -23,14 +23,14 @@ async function createProdServer() {
   )
 
   // Sitemap
-  // app.get('/sitemap.xml', async (req, res) => {
-  //   console.log('Retrieving sitemap')
-  //   const sitemap = await generateSitemap()
-  //   return res
-  //     .status(200)
-  //     .set({ 'Content-Type': 'application/xml' })
-  //     .end(sitemap)
-  // })
+  app.get('/sitemap.xml', async (req, res) => {
+    console.log('Retrieving sitemap')
+    const sitemap = await generateSitemap()
+    return res
+      .status(200)
+      .set({ 'Content-Type': 'application/xml' })
+      .end(sitemap)
+  })
 
   // SSR
   app.use('*', async (req, res, next) => {
@@ -62,14 +62,14 @@ async function createDevServer() {
   app.use(vite.middlewares)
 
   // Sitemap
-  // app.get('/sitemap.xml', async (req, res) => {
-  //   console.log('Retrieving sitemap')
-  //   const sitemap = await generateSitemap()
-  //   return res
-  //     .status(200)
-  //     .set({ 'Content-Type': 'application/xml' })
-  //     .end(sitemap)
-  // })
+  app.get('/sitemap.xml', async (req, res) => {
+    console.log('Retrieving sitemap')
+    const sitemap = await generateSitemap()
+    return res
+      .status(200)
+      .set({ 'Content-Type': 'application/xml' })
+      .end(sitemap)
+  })
 
   // SSR
   app.use('*', async (req, res, next) => {
