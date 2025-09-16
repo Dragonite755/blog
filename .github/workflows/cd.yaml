@@ -49,6 +49,6 @@ jobs:
           service: blog-frontend
           image: ${{ secrets.DOCKERHUB_USERNAME }}/blog-frontend:latest
           region: ${{ secrets.GOOGLECLOUD_REGION }}
-        env:
-          FRONTEND_URL: ${{ steps.deploy-frontend.outputs.url }}
-          VITE_BACKEND_URL: ${{ steps.deploy-backend.outputs.url }}/api/v1
+          env_vars: |
+            FRONTEND_URL=${{ steps.deploy-frontend.outputs.url }}
+            VITE_BACKEND_URL=${{ steps.deploy-backend.outputs.url }}/api/v1
